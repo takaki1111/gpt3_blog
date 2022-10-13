@@ -37,6 +37,6 @@ section = st.text_input("記事の見出し名","")
 sum_str =st.slider("生成する文字数", 0, 3000, 1000, 1)
 if title and tags and section:
     prompt_input = prompt.translate(str.maketrans({'1': title, '2': tags,'3': section}))
-    return_sent = text_summary(prompt_input)
+    return_sent = text_summary(prompt_input,sum_str)
 
     st.text_area("見出し記事本文",return_sent, height=700,max_chars=3500)
