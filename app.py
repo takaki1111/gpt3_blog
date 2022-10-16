@@ -5,8 +5,8 @@ import datetime
 import openai
 
 
-#API_KEY=st.secrets.OpenAI.API_KEY
-openai.api_key = "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"
+API_KEY=st.secrets.OpenAI.API_KEY
+openai.api_key = API_KEY
 
 def make_sentence(prompt,sum_str,temperature):
     response = openai.Completion.create(
