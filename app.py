@@ -63,9 +63,8 @@ else:
 
 if st.button('見出し記事本文生成'):
     full_text = make_sentence(prompt_input,sum_str,temperature)
-    #full_text = ini_text + full_text
-    st.write('<span style="color:#000000;background:white">ini_text</span>\
-            <span style="color:#000000;background:#EEEEEE">full_text</span>',\
-            unsafe_allow_html=True)
-    #st.text_area(label='見出し記事本文', value=full_text, height=700,max_chars=3500)
+    full_text = ini_text + full_text
+    st.text_area(label='見出し記事本文', value=full_text, height=700,max_chars=3500)
+else:
+    st.text_area(label='見出し記事本文', value="", height=700,max_chars=3500)
 
