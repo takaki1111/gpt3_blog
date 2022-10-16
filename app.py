@@ -41,7 +41,6 @@ if genre == mh1:
 
     prompt = "Blog\nTitle:X\ntags:Y\nSection:Z\nFull text:"
     prompt_input = prompt.translate(str.maketrans({'X': title, 'Y': tags,'Z': section}))
-    st.write(prompt_input)
 
     
 
@@ -57,7 +56,6 @@ else:
 
     prompt = "Blog\nTitle:X\nIntro:Y\nSection:Z\nFull text:R"
     prompt_input = prompt.translate(str.maketrans({'X': title, 'Y': intr,'Z': section,'R': sec_sentc}))
-    #st.write(prompt_input)
 
 
 
