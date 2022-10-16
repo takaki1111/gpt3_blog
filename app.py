@@ -68,6 +68,4 @@ if st.button('見出し記事本文生成'):
             <span style="color:#000000;background:#EEEEEE">full_text</span>',\
             unsafe_allow_html=True)
     #st.text_area(label='見出し記事本文', value=full_text, height=700,max_chars=3500)
-else:
-    #st.text_area(label='見出し記事本文', value="", height=700,max_chars=3500)
 
