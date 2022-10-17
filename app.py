@@ -73,7 +73,7 @@ elif genre == mh2:
     
 
 else:
-    input_text = st.text_area(label="要約する元のテキスト",height=300) 
+    input_text = st.text_area(label="要約する元のテキスト",height=300,max_chars=3000) 
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
     point = st.slider("要約で得たい文章の数", 1, 7, 3, 1)
