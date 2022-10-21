@@ -3,6 +3,31 @@ from streamlit_chat import message
 import requests
 import datetime
 import openai
+import yaml
+
+
+with open('config.yaml', 'r') as yml:
+    config = yaml.safe_load(yml)
+
+
+intr_dir = config['intr']
+
+sec_sentc_dir = config['sec_sentc']
+
+summery_text_dir = config['summery_text']
+
+
+
+with open(intr_dir, "r", encoding="utf-8") as f:
+     intr = f.read()
+
+with open(sec_sentc_dir, "r", encoding="utf-8") as f:
+     sec_sentc = f.read()
+sec_sentc = sec_sentc.replace('\n','')
+
+with open(summery_text_dir, "r", encoding="utf-8") as f:
+     summery_text = f.read()
+summery_text = summery_text.replace('\n','')
 
 
 API_KEY=st.secrets.OpenAI.API_KEY
@@ -55,10 +80,10 @@ elif genre == mh2:
 
     title = st.text_input("ブログ記事のタイトル","") 
     #intr = st.text_input("記事のイントロ(導入文)を2～3行程度","") 
-    intr = st.text_area(label="記事のイントロ(導入文)を2～3行程度",height=50) 
+    intr = st.text_area(label="記事のイントロ(導入文)を2～3行程度",height=50,placeholder=intr) 
     section = st.text_input("記事の見出し名","")
     #sec_sentc = st.text_input("見出しの冒頭文章(2～3行くらいの文量)","")
-    sec_sentc = st.text_area(label="見出しの冒頭文章(2～3行くらいの文量)",height=50)
+    sec_sentc = st.text_area(label="見出しの冒頭文章(2～3行くらいの文量)",height=50,placeholder=sec_sentc)
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
     ini_text = sec_sentc
@@ -73,7 +98,7 @@ elif genre == mh2:
     
 
 else:
-    input_text = st.text_area(label="要約する元のテキスト",height=300,max_chars=3000) 
+    input_text = st.text_area(label="要約する元のテキスト",height=300,max_chars=3000,placeholder=summery_text) 
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
     point = st.slider("要約で得たい文章の数", 1, 7, 3, 1)
@@ -89,4 +114,3 @@ else:
         full_text = make_sentence(prompt_input,sum_str,temperature)
         #full_text = ini_text + full_text
         st.text_area(label='要約文', value=full_text, height=700,max_chars=3500)
-
