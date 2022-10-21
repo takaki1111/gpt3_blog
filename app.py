@@ -81,7 +81,7 @@ elif genre == mh2:
     title = st.text_input("ブログ記事のタイトル","",placeholder="例)福利厚生でネイル体験") 
     #intr = st.text_input("記事のイントロ(導入文)を2～3行程度","") 
     intr = st.text_area(label="記事のイントロ(導入文)を2～3行程度",height=50,placeholder=intr) 
-    section = st.text_input("記事の見出し名","",placeholder"例)社内の福利厚生ネイル")
+    section = st.text_input("記事の見出し名","",placeholder = "例)社内の福利厚生ネイル")
     #sec_sentc = st.text_input("見出しの冒頭文章(2～3行くらいの文量)","")
     sec_sentc = st.text_area(label="見出しの冒頭文章(2～3行くらいの文量)",height=50,placeholder=sec_sentc)
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
