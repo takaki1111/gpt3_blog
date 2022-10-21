@@ -35,9 +35,9 @@ genre = st.radio(
 
 if genre == mh1:
 
-    title = st.text_input("ブログ記事のタイトル","") 
-    tags = st.text_input("見出し記事のタグ(含めたいキーワード)","") 
-    section = st.text_input("記事の見出し名","")
+    title = st.text_input("ブログ記事のタイトル","",placeholder="例)マーケティングに活かせる「行動経済学」のススメ") 
+    tags = st.text_input("見出し記事のタグ(含めたいキーワード)","",placeholder="例)行動経済学、フレーム、バイアス、ナッジ") 
+    section = st.text_input("記事の見出し名","",placeholder="例)「行動経済学」とはいったい何か")
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
     ini_text = ""
