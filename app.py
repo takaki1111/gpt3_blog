@@ -123,4 +123,5 @@ elif genre == mh4:
     button_name = 'SEOテキストを生成させる'
     if st.button(button_name):
             full_text = make_sentence(prompt_input,sum_str,temperature)
-            st.text_area(label='SEOテキスト', value=full_text, height=300,max_chars=3500)
+            seo_text = pref + "は" + full_text
+            st.text_area(label='SEOテキスト', value=seo_text, height=300,max_chars=3500)
