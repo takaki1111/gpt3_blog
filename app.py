@@ -16,6 +16,7 @@ sec_sentc_dir = config['sec_sentc']
 
 summery_text_dir = config['summery_text']
 
+seo_prompt_dir = config['seo_prompt']
 
 
 with open(intr_dir, "r", encoding="utf-8") as f:
@@ -29,6 +30,8 @@ with open(summery_text_dir, "r", encoding="utf-8") as f:
      summery_text = f.read()
 summery_text = summery_text.replace('\n','')
 
+with open(seo_prompt_dir, "r", encoding="utf-8") as f:
+     seo_prompt = f.read()
 
 API_KEY=st.secrets.OpenAI.API_KEY
 openai.api_key = API_KEY
@@ -52,11 +55,11 @@ st.header("ブログ記事ライティング")
 mh1 = '①記事本文生成[記事のタイトル + タグ + 記事の見出し名]'
 mh2 = '②記事本文生成[記事のタイトル + イントロ + 記事の見出し名 + 見出しの冒頭文章]'
 mh3 = '③文章の要約'
-
+mh4 = '④SEOテキスト(エリア情報)の生成'
 
 genre = st.radio(
      "以下の3つから行いたい文章生成のタスクを選んでください。",
-     (mh1,mh2,mh3))
+     (mh1,mh2,mh3,mh4))
 
 if genre == mh1:
 
@@ -97,7 +100,7 @@ elif genre == mh2:
 
     
 
-else:
+elif genre == mh3:
     input_text = st.text_area(label="要約する元のテキスト",height=500,max_chars=3000,placeholder=summery_text) 
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
@@ -109,8 +112,15 @@ else:
     prompt_input = input_text + prompt
     button_name = '文章を要約する'
 
-        
+elif genre == mh4:
+    pref = st.text_input("都道府県名を入力してください","",placeholder="例)宮崎県") 
+    sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
+    temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
+    ini_text = sec_sentc
+    prompt = "Blog\nTitle:日本全国47都道府県別を紹介！\ntags:XXX\nSection:XXXの見どころを教えます\nFull text:XXXは"
+    prompt = prompt.replace('XXX', pref)
+    prompt_input = seo_prompt + prompt
+    button_name = 'SEOテキストを生成させる'
     if st.button(button_name):
-        full_text = make_sentence(prompt_input,sum_str,temperature)
-        #full_text = ini_text + full_text
-        st.text_area(label='要約文', value=full_text, height=700,max_chars=3500)
+            full_text = make_sentence(prompt_input,sum_str,temperature)
+            st.text_area(label='SEOテキスト', value=full_text, height=300,max_chars=3500)
