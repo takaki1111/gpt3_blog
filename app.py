@@ -44,7 +44,7 @@ def make_sentence(prompt,sum_str,temperature):
     max_tokens=sum_str,
     top_p=1.0,
     frequency_penalty=0.5,
-    presence_penalty=0.0,
+    presence_penalty=0.4,
     )
 
     # 分析結果の出力
