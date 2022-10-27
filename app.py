@@ -113,10 +113,10 @@ elif genre == mh3:
     button_name = '文章を要約する'
 
 elif genre == mh4:
-    pref = st.selectbox('あなたの好きな言語を選んでね！',
+    pref = st.selectbox('都道府県を以下から選んでください',
                          ('東京','大阪', '神奈川県', '宮城県'))
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
-    temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
+    temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.50, 0.05)
     ini_text = sec_sentc
     prompt = "Blog\nTitle:日本全国47都道府県別を紹介！\ntags:XXX\nSection:XXXの見どころを教えます\nFull text:XXXは"
     prompt = prompt.replace('XXX', pref)
