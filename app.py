@@ -58,7 +58,7 @@ mh3 = '③文章の要約'
 mh4 = '④SEOテキスト(エリア情報)の生成'
 
 genre = st.radio(
-     "以下の3つから行いたい文章生成のタスクを選んでください。",
+     "以下の4つから行いたい文章生成のタスクを選んでください。",
      (mh1,mh2,mh3,mh4))
 
 if genre == mh1:
@@ -129,4 +129,4 @@ elif genre == mh4:
           for i in range(num_seo_txt):
                full_text = make_sentence(prompt_input,sum_str,temperature)
                seo_text = pref + "は" + full_text
-               st.text_area(label='SEOテキスト'+str(i), value=seo_text, height=300,max_chars=3500)
+               st.text_area(label='SEOテキスト'+str(i+1), value=seo_text, height=300,max_chars=3500)
