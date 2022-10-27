@@ -122,7 +122,9 @@ elif genre == mh4:
     prompt = prompt.replace('XXX', pref)
     prompt_input = seo_prompt + prompt
     button_name = 'SEOテキストを生成させる'
+    
     if st.button(button_name):
-            full_text = make_sentence(prompt_input,sum_str,temperature)
-            seo_text = pref + "は" + full_text
-            st.text_area(label='SEOテキスト', value=seo_text, height=300,max_chars=3500)
+          for i in range(3):
+               full_text = make_sentence(prompt_input,sum_str,temperature)
+               seo_text = pref + "は" + full_text
+               st.text_area(label='SEOテキスト', value=seo_text, height=300,max_chars=3500)
