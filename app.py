@@ -117,6 +117,8 @@ elif genre == mh4:
                          ('東京','大阪', '神奈川県', '宮城県'))
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.50, 0.05)
+　　num_seo_txt =st.slider("生成するSEOテキストの数", 1, 5, 3, 1)    
+
     ini_text = sec_sentc
     prompt = "Blog\nTitle:日本全国47都道府県別を紹介！\ntags:XXX\nSection:XXXの見どころを教えます\nFull text:XXXは"
     prompt = prompt.replace('XXX', pref)
@@ -124,7 +126,7 @@ elif genre == mh4:
     button_name = 'SEOテキストを生成させる'
     
     if st.button(button_name):
-          for i in range(3):
+          for i in range(num_seo_txt):
                full_text = make_sentence(prompt_input,sum_str,temperature)
                seo_text = pref + "は" + full_text
-               st.text_area(label='SEOテキスト', value=seo_text, height=300,max_chars=3500)
+               st.text_area(label='SEOテキスト'+str(i), value=seo_text, height=300,max_chars=3500)
