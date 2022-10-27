@@ -113,7 +113,7 @@ elif genre == mh3:
     button_name = '文章を要約する'
 
 elif genre == mh4:
-    pref = st.selectbox'あなたの好きな言語を選んでね！',
+    pref = st.selectbox('あなたの好きな言語を選んでね！',
                          ('東京','大阪', '神奈川県', '宮城県'))
     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.80, 0.05)
