@@ -143,6 +143,6 @@ elif genre == mh5:
      button_name = '感情分析を行う'
 
      if st.button(button_name):
-          full_text = make_sentence(prompt_input,sum_str=sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1),\
-                                    temperature=st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05))
+          full_text = make_sentence(prompt_input,sum_str=sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)\
+                                    ,temperature=st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05))
           st.text_input("感情分析の結果",full_text) 
