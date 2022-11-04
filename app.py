@@ -134,7 +134,7 @@ elif genre == mh4:
                st.text_area(label='SEOテキスト'+str(i+1), value=seo_text, height=300,max_chars=3500)
 
 elif genre == mh5:
-     senti_sent = st.text_input("感情分析を行う文章","",placeholder="例)今日転んで痛かった") 
+     senti_sent = st.text_input("感情分析を行う文章(ポジティブ、ネガティブ、ニュートラルに判定)","",placeholder="例)今日転んで痛かった") 
      #sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
      #temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05)
      prompt="次のコメントを感情分析します。\nコメント:いいね\n感情:ポジティブ\nコメント:いまいち\n感情:ネガティブ\nコメント:まずまず\n感情:ニュートラル\nコメント:XXX\n感情:"
