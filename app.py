@@ -56,10 +56,12 @@ mh1 = '①記事本文生成[記事のタイトル + タグ + 記事の見出し
 mh2 = '②記事本文生成[記事のタイトル + イントロ + 記事の見出し名 + 見出しの冒頭文章]'
 mh3 = '③文章の要約'
 mh4 = '④SEOテキスト(エリア情報)の生成'
+mh5 = '⑤感情分析'
+
 
 genre = st.radio(
-     "以下の4つから行いたい文章生成のタスクを選んでください。",
-     (mh1,mh2,mh3,mh4))
+     "以下の5つから行いたい文章生成のタスクを選んでください。",
+     (mh1,mh2,mh3,mh4,mh5))
 
 if genre == mh1:
 
@@ -130,3 +132,16 @@ elif genre == mh4:
                full_text = make_sentence(prompt_input,sum_str,temperature)
                seo_text = pref + "は" + full_text
                st.text_area(label='SEOテキスト'+str(i+1), value=seo_text, height=300,max_chars=3500)
+
+elif genre == mh5:
+     senti_sent = st.text_input("感情分析を行う文章","",placeholder="例)今日転んで痛かった") 
+     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
+     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.50, 0.05)
+     prompt="次のコメントを感情分析します。\nコメント:いいね\n感情:ポジティブ\nコメント:いまいち\n感情:ネガティブ\nコメント:まずまず\n感情:ニュートラル\nコメント:XXX\n感情:",
+     prompt = prompt.replace('XXX', senti_sent)
+     prompt_input = prompt
+     button_name = '感情分析の結果'
+
+     if st.button(button_name):
+          full_text = make_sentence(prompt_input,sum_str,temperature)
+          st.text_input("感情分析の結果",full_text) 
