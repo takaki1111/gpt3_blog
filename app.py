@@ -135,13 +135,14 @@ elif genre == mh4:
 
 elif genre == mh5:
      senti_sent = st.text_input("感情分析を行う文章","",placeholder="例)今日転んで痛かった") 
-     sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
-     temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05)
+     #sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1)    
+     #temperature = st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05)
      prompt="次のコメントを感情分析します。\nコメント:いいね\n感情:ポジティブ\nコメント:いまいち\n感情:ネガティブ\nコメント:まずまず\n感情:ニュートラル\nコメント:XXX\n感情:"
      prompt = prompt.replace('XXX', senti_sent)
      prompt_input = prompt
-     button_name = '感情分析の結果'
+     button_name = '感情分析を行う'
 
      if st.button(button_name):
-          full_text = make_sentence(prompt_input,sum_str,temperature)
+          full_text = make_sentence(prompt_input,sum_str=sum_str =st.slider("生成する最大文字数", 0, 3000, 1000, 1),\
+                                    temperature=st.slider("出現させる単語のランダム性", 0.0, 2.0, 0.70, 0.05))
           st.text_input("感情分析の結果",full_text) 
