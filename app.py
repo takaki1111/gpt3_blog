@@ -143,5 +143,5 @@ elif genre == mh5:
      button_name = '感情分析を行う'
 
      if st.button(button_name):
-          full_text = make_sentence(prompt_input,sum_str=sum_str =100,temperature=0.7)
+          full_text = make_sentence(prompt_input,sum_str=100,temperature=0.7)
           st.text_input("感情分析の結果",full_text) 
